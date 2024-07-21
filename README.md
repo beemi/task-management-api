@@ -25,7 +25,7 @@ This Task Management API is a RESTful service built with Node.js and Express.js,
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/task-management-api.git
+git clone https://github.com/beemi/task-management-api.git
 cd task-management-api
 ```
 

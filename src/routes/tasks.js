@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
+const express = require('express');
+const { createTask, getTasks, getTask, updateTask, deleteTask } = require('../controllers/taskController');
+const auth = require('../middleware/auth');
+const router = express.Router();
 
-const taskSchema = new mongoose.Schema({
-    title: { type: String, required: true },
-    description: { type: String },
-    status: { type: String, enum: ['todo', 'in_progress', 'done'], default: 'todo' },
-    priority: { type: Number, default: 1 },
-    dueDate: { type: Date },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-}, { timestamps: true });
+router.post('/', auth, createTask);
+router.get('/', auth, getTasks);
+router.get('/:id', auth, getTask);
+router.put('/:id', auth, updateTask);
+router.delete('/:id', auth, deleteTask);
 
-module.exports = mongoose.model('Task', taskSchema);
+module.exports = router;
